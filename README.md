@@ -124,13 +124,13 @@ task runLibrary(type: JavaExec) {
   classpath += sourceSets.main.runtimeClasspath
   args "Gradle"
 }
-
 ```
 
 
-* Library.java 수정
 
-```    public static void main(String[] args) {
+* Library.java 수정
+```
+    public static void main(String[] args) {
     	System.out.println("Hello world!");
     }
 ```
@@ -146,6 +146,19 @@ task runLibrary(type: JavaExec) {
 ./gradlew build
 ./gradlew runLibrary
 ```
+
+* build.gradle 파일 수정
+```
+// eclipse plugin 추가
+apply plugin: 'eclipse'
+
+...
+...
+
+tasks.eclipse.dependsOn cleanEclipse
+```
+
+
 
 
 
