@@ -11,7 +11,7 @@
 apply plugin: 'java'
 
 ext {
-  javaVersion='1.7'
+    javaVersion = '1.7'
 }
 
 buildDir = 'build' // 기본값
@@ -39,12 +39,11 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 
-
 // JavaExec라는 Task 클래스를 상속하여 태스크 생성
 // http://www.gradle.org/docs/current/dsl/org.gradle.api.tasks.JavaExec.html
 task runLibrary(type: JavaExec) {
-  main = "Library"
-  classpath += sourceSets.main.runtimeClasspath
-  args "Gradle"
+    main = "Library"
+    classpath += sourceSets.main.runtimeClasspath
+    args "Gradle"
 }
 
