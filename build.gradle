@@ -10,6 +10,9 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
+// eclipse plugin 추가
+apply plugin: 'eclipse'
+
 ext {
     javaVersion = '1.7'
 }
@@ -47,3 +50,5 @@ task runLibrary(type: JavaExec) {
     args "Gradle"
 }
 
+
+tasks.eclipse.dependsOn cleanEclipse

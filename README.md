@@ -158,6 +158,9 @@ apply plugin: 'eclipse'
 tasks.eclipse.dependsOn cleanEclipse
 ```
 
+* eclipse 에서 import project 실행
+
+
 
 
 
