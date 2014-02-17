@@ -12,6 +12,8 @@ out/
 target/
 atlassian-ide-plugin.xml
 build/
+.gradle
+bin/
 
 # logs
 ######################
