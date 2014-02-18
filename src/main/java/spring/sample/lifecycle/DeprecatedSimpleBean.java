@@ -53,7 +53,7 @@ public class DeprecatedSimpleBean {
 
     public static void main(String[] args) {
         ConfigurableListableBeanFactory factory = new XmlBeanFactory(new FileSystemResource(
-                "./src/main/resources/HelloSpringApplicationContext.xml"));
+                "./src/main/resources/BeanLifeCycleApplicationContext.xml"));
 
         DeprecatedSimpleBean simpleBean1 = getBean("simpleBean1", factory);
         DeprecatedSimpleBean simpleBean2 = getBean("simpleBean2", factory);

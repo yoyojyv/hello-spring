@@ -58,7 +58,7 @@ public class DeprecatedSimpleBeanWithInterface implements InitializingBean, Disp
     public static void main(String[] args) {
 
         ConfigurableListableBeanFactory factory = new XmlBeanFactory(new FileSystemResource(
-                "src/main/resources/HelloSpringApplicationContext.xml"));
+                "src/main/resources/BeanLifeCycleApplicationContext.xml"));
 
         DeprecatedSimpleBeanWithInterface simpleBean1 = getBean("simpleBeanI1", factory);
 //        DeprecatedSimpleBeanWithInterface simpleBean2 = getBean("simpleBeanI2", factory);
