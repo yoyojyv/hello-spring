@@ -323,6 +323,11 @@ public class GreetingApp {
 ```
 
 
+* Spring bean 의 life cycle 이 궁금하다면 javajigi 님의 링크[http://javajigi.net/pages/viewpage.action?pageId=1040] 를 보고 따라해 볼 것
+* 다음의 링크도 참조 spring-bean-life-cycle [http://howtodoinjava.com/2013/05/07/spring-bean-life-cycle/]
+
+
+
 
 
 
