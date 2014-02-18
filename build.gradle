@@ -15,6 +15,7 @@ apply plugin: 'eclipse'
 
 ext {
     javaVersion = '1.7'
+    springVersion = '3.2.4.RELEASE'
 }
 
 buildDir = 'build' // 기본값
@@ -40,6 +41,9 @@ dependencies {
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.11'
+
+    // spring context dependency 추가
+    compile "org.springframework:spring-context:$springVersion"
 }
 
 // JavaExec라는 Task 클래스를 상속하여 태스크 생성

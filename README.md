@@ -171,6 +171,161 @@ tasks.eclipse.dependsOn cleanEclipse
 
 * eclipse 에서 import project 실행
 
+### Step02. Hello Spring
+
+
+* spring dependency 를 추가
+```
+ext {
+    javaVersion = '1.7'
+    springVersion = '3.2.4.RELEASE'
+}
+
+// spring context dependency 추가
+compile "org.springframework:spring-context:$springVersion"
+```
+
+
+* Hello.java 파일 추가
+
+```
+package spring.sample.hello;
+
+public class Hello {
+
+    public String hello() {
+        return "Hello, world!";
+    }
+
+}
+```
+
+* HelloJavaApp.java 파일 추가
+```
+package spring.sample.hello;
+
+public class HelloJavaApp {
+
+    public static void main(String[] args) {
+        Hello hello = new Hello();
+        System.out.println(hello.hello());
+    }
+
+}
+```
+
+* src/main/resources/HelloSpringApplicationContext.xml 파일 추가
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hello" class="spring.sample.hello.Hello" />
+
+</beans>
+```
+
+* HelloSpringApp.java 파일 추가 후 실행해보기
+```
+package spring.sample.hello;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class HelloSpringApp {
+
+    public static void main(String[] args) {
+
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("HelloSpringApplicationContext.xml");
+
+        // Hello hello = (Hello) applicationContext.getBean("hello");
+        Hello hello = applicationContext.getBean("hello", Hello.class);
+
+        System.out.println(hello.hello());
+
+    }
+
+}
+```
+
+* GreetingService interface 추가
+```
+package spring.sample.hello;
+
+public interface GreetingService {
+
+    public String greeting();
+
+}
+```
+
+* GreetingService interface 를 구현하는 클래스 만들기
+
+* MorningGreetingService.java
+```
+package spring.sample.hello;
+
+public class MorningGreetingService implements GreetingService {
+
+    @Override
+    public String greeting() {
+        return "좋은 아침이에요!";
+    }
+
+}
+```
+
+* LunchGreetingService.java
+```
+package spring.sample.hello;
+
+/**
+ * Created by yoyojyv on 2014. 2. 18..
+ */
+public class LunchGreetingService implements GreetingService {
+
+    @Override
+    public String greeting() {
+        return "점심 맛나게 드세요!";
+    }
+
+}
+```
+
+* HelloSpringApplicationContext.xml 파일에 greetingService 빈 추가
+```
+<bean id="greetingService" class="spring.sample.hello.MorningGreetingService" />
+```
+
+* GreetingApp.java 파일 만들기
+```
+package spring.sample.hello;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class GreetingApp {
+
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("HelloSpringApplicationContext.xml");
+        GreetingService greetingService = applicationContext.getBean("greetingService", GreetingService.class);
+        System.out.println(greetingService.greeting());
+    }
+
+}
+
+```
+
+* greetingService 빈의 class 를 변경해 보고 GreetingApp 다시 실행 해보기
+```
+<bean id="greetingService" class="spring.sample.hello.LunchGreetingService" />
+```
+
+
+
+
+
 
 
 
