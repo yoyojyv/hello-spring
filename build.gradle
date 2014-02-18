@@ -50,5 +50,14 @@ task runLibrary(type: JavaExec) {
     args "Gradle"
 }
 
+// source, resources directory 생성
+task initProject(description: 'initialize project') << {
+	createDir = {
+		println "create source directory: $it"
+		it.mkdirs()
+	}
+	sourceSets*.java.srcDirs*.each createDir
+	sourceSets*.resources.srcDirs*.each createDir
+}
 
 tasks.eclipse.dependsOn cleanEclipse

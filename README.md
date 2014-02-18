@@ -117,6 +117,16 @@ dependencies {
 }
 
 
+// source, resources directory 생성
+task initProject(description: 'initialize project') << {
+	createDir = {
+		println "create source directory: $it"
+		it.mkdirs()
+	}
+	sourceSets*.java.srcDirs*.each createDir
+	sourceSets*.resources.srcDirs*.each createDir
+}
+
 // JavaExec라는 Task 클래스를 상속하여 태스크 생성
 // http://www.gradle.org/docs/current/dsl/org.gradle.api.tasks.JavaExec.html
 task runLibrary(type: JavaExec) {
@@ -143,6 +153,7 @@ task runLibrary(type: JavaExec) {
 
 * 태스크 실행
 ```
+./gradlew initProject
 ./gradlew build
 ./gradlew runLibrary
 ```
