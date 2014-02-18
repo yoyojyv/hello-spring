@@ -45,7 +45,7 @@ public class DeprecatedSimpleBeanWithInterface implements InitializingBean, Disp
 
     @Override
     public void destroy() throws Exception {
-        System.out.println("custum destroy... Destorying bean");
+        System.out.println("destroy... Destorying bean");
 
         name = null;
     }
